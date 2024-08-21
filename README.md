@@ -161,41 +161,31 @@ Based on the analysis of the refined dataset, the results from these models were
 
 #### Results from Model Evaluation using Default Settings for each Model
 
-<img width="1390" alt="image" src="https://github.com/user-attachments/assets/32687bc7-d847-4171-9d1b-f64c7d7dd710">
+<img width="1390" alt="image" src="https://github.com/user-attachments/assets/2e339f36-a455-49e2-8c4f-16c9edc3cab4">
 
 #### Confusion Matrix using Default Settings for each Model
 
 The associated Confusion Matrix for these models (excluded Dummy Classifier) are as shown below. 
 
-![Confusion Matrix Comparison for 4 Models](https://github.com/user-attachments/assets/f21e0700-a6b3-4efb-9450-9257ec53eda2)
+![Confusion Matrix Comparison for 4 Models](https://github.com/user-attachments/assets/3af19840-6677-4318-87d9-e79fb00bda3c)
 
 #### ROC AUC Curve using Default Settings for each Model
 
 The associated ROC AUC Curve for each of these models (excluding Dummy Classifier) are as shown below.
 
-![ROC-AUC Curve Comparison for 4 Models](https://github.com/user-attachments/assets/1a1a8d48-67e9-4d45-ab17-3af2d0660840)
+![ROC-AUC Curve Comparison for 4 Models](https://github.com/user-attachments/assets/e4d24f70-6d8d-4e29-a14d-169a217343ac)
 
 #### Observation:
 - Based on the results shown above, we can see that Logistic Regression and Support Vector Machines have a very good accuracy score of 0.91  
-- However, we also see that Support Vector Machines takes 30 seconds to process 7186 records while Logistic Regression takes only 0.15 seconds for 7136 records.  
+- However, we also see that Support Vector Machines takes 118 seconds to process 7186 records while Logistic Regression takes only 0.65 seconds for 7136 records.  
 - Decision Tree Classifer and K Nearest Neighbor have a fairly lower accuracy score with Decision Tree Classifier getting fewer items correct.  
 - Looking at the performance, K Nearest Neighbor has the best time while maintaining a competitive accuracy score. 
-- Overall, I would recommend Logistic Regresion as the choice of model if we were to scale the test to a bigger dataset as the accuracy score of 0.91 and the ROC-AUC curve is 0.93
-
-#### Opportunity:
-- Improve the Recall Score as they are ranging from 0.30 (SVM) to 0.52 (Decision Tree)
 
 ### Improved Model Comparison : With Hyperparameter Tuning
 
 #### Feature Engineering before model comparison
 
 During the initial run, I found that some of the features do not have a strong correlation and can be eliminated. This can improve the performance when we tune the hyperparameters.
-
-#### Features Dropped
-I was able to drop the following features before hyperparameter tuning
-
-- **housing** : The ratio of customers accepting an offer is a constant 11% irrespective of whether they have a housing loan or not
-- **loan** : Similarly, the ratio of customers accepting an offer is a constant 11% irrespective of whether they have a personal loan or not
 
 #### Hyperparameter Selected:
 
@@ -236,27 +226,14 @@ I was able to drop the following features before hyperparameter tuning
 
 With the further refined dataset, below are the results for the four models:
 
-#### Results from Model Evaluation using Hyperparameter Tuning for each Model
-
-<img width="1398" alt="image" src="https://github.com/user-attachments/assets/c4b6517a-44bc-43ba-b280-ee25a986201d">
-
 #### Confusion Matrix using Hyperparameter Tuning for each Model
 
 The associated Confusion Matrix for these models are as shown below.
 
-![Optimized Confusion Matrix Comparison for 4 Models](https://github.com/user-attachments/assets/5c62c363-dd05-4670-9950-47f8eb22a601)
-
-#### ROC AUC Curve using Hyperparameter Tuning for each Model
-
-The associated ROC AUC Curve for each of these models are as shown below.
-
-![Optimized ROC-AUC Curve Comparison for 4 Models](https://github.com/user-attachments/assets/0ddc75dc-d685-4831-aab4-3b0c9304e3d9)
+![Optimized Confusion Matrix Comparison for 4 Models](https://github.com/user-attachments/assets/2d52b408-8f48-4de9-8968-361f73d854df)
 
 #### Observation:
 Adding hyperparameters, I was able to see a much better result for all 4 models. 
-- The accuracy ratio improved from **0.89** to **0.91 and 0.92** with the ROC-AOC score pushing from **0.7x** to **0.91 and 0.92**.
-- However, as we can see, the hyperparameters comes with a cost.
-- The time to process this takes longer with SVM taking more than **30 minutes** to process compared to earlier process within **30 seconds**.
 
 ## Recommendation:
 Use Logistic Regression with hyperparameters as the precision is higher, recall is higher, and ROC AUC score is also higher. The overall time it takes to process Logistic Regression is much lower than all others making it the best option among the 4 models.
